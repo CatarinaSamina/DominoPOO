@@ -1,0 +1,200 @@
+//        Peca p = new Peca(1,1);
+//        Peca q = new Dupla(5,5);
+//        if (q.getClass().getName() == "Dupla") {
+//            System.out.println("ola");
+//        }
+//
+//        //q.next = p;
+        Domino dom = new Domino();
+        dom.showPieces();
+        dom.jogo.addPiece();
+//        for (Jogador jogador: dom.jogadores) {
+//            System.out.println("Jogador: " + jogador.showid());
+//            jogador.showpieces();
+//        }
+//
+//        System.out.println(dom.checkFirstPlay());
+
+        //System.out.println(q.next  + " " + q.previous + " " + ((Dupla) q).up + " " + ((Dupla) q).down);
+        //dom.jogadores[0].showpieces();
+//        Peca []result = dom.jogadores[0].jogada();
+//        //clearScreen();
+//        //dom.jogadores[0].showpieces();
+//        //System.out.println(dom.jogadores[3].calcPontos());
+//        // errado
+//        Jogador []jogadore = dom.jogo.Classificacao();
+//        for (Jogador jogador: jogadore) {
+//            System.out.println(jogador.showid() + " " + jogador.pontos);
+//        }
+//        dom.Game();
+
+
+
+
+int i = 0;
+            Node n = new Node(peca);
+            Node direcao;
+            Node oposta;
+            do {
+                direcao = canto.direcoes[i];
+                if (n.peca.getClass().getName().equals("Dupla")) {
+                    oposta = n.direcoes[(i+2)%4];
+                }
+                else {
+                    oposta = n.direcoes[(i+1)%2];
+                }
+                System.out.println(i);
+                i++;
+
+            } while (canto.direcoes[i] != null);
+            direcao = n;
+            n.right = canto;
+            cantos.add(n);
+
+
+
+
+
+            canto.direcoes[0] = pec;
+                        pec.right = canto;
+                        cantos.add(pec);
+                        System.out.println(canto.peca.getClass().getName());
+                        System.out.println(canto.direcoes[0].peca + " ola " + canto.peca);
+
+
+
+                        canto.direcoes[0] = pec;
+                        //            pec.right = canto;
+                        //            cantos.add(pec);
+                        //            System.out.println(canto.peca.getClass().getName());
+                        //            System.out.println(canto.direcoes[0].peca + " ola " + canto.peca);
+
+
+                        int i = 0;
+                                    while (canto.direcoes[i] != null) {
+                                        i++;
+                                    }
+
+                                    Node pec = new Node(peca);
+                                    canto.direcoes[i] = pec;
+                                    pec.direcoes[((i/2)+1)%2] = canto;
+                                    System.out.println(canto.direcoes[i].peca);
+                                    System.out.println(pec.direcoes[((i/2)+1)%2].peca);
+                                    cantos.add(pec);
+                                    Tabuleiro.add(peca);
+
+
+
+
+
+// falta para quando é dupla mas nao esta na vertical
+            if (canto.peca.getClass().getName().equals("Dupla")) {
+                if (i == 0) {
+                    peca.setX(canto.peca.getX()-3);
+                    peca.setY(canto.peca.getY()+1);
+                }
+                else if (i == 1) {
+                    peca.setVert();
+                    peca.setY(canto.peca.getY()-3);
+                    peca.setY(canto.peca.getY());
+                }
+                else if (i == 2) {
+                    peca.setX(canto.peca.getX()+1);
+                    peca.setY(canto.peca.getY()+1);
+                }
+                else {
+                    peca.setVert();
+                    peca.setY(canto.peca.getY()+3);
+                    peca.setY(canto.peca.getY());
+                    cantos.remove(canto);
+                }
+            }
+            else if (canto.peca.getVert()){
+                if (!peca.getClass().getName().equals("Dupla")) {
+                    if (i == 0) {
+                        peca.setY(canto.peca.getY()-3);
+                    }
+                    else {
+                        peca.setY(canto.peca.getY()+3);
+                        cantos.remove(canto);
+                    }
+                    peca.setX(canto.peca.getX());
+                    peca.setVert();
+                }
+                else {
+                    if (i == 0) {
+                        peca.setY(canto.peca.getY()-1);
+                    }
+                    else {
+                        peca.setY(canto.peca.getY()+1);
+                        cantos.remove(canto);
+                    }
+                    peca.setX(canto.peca.getX()-1);
+                }
+            }
+            else if (!canto.peca.getVert()) {
+                if (peca.getClass().getName().equals("Dupla")) {
+                    if (i == 0) {
+                        peca.setX(canto.peca.getX()-1);
+                    }
+                    else {
+                        peca.setX(canto.peca.getX()+1);
+                        cantos.remove(canto);
+                    }
+                    peca.setY(canto.peca.getY()-1);
+                    peca.setVert();
+                }
+                else {
+                    if (i == 0) {
+                        peca.setX(canto.peca.getX()-3);
+                    }
+                    else {
+                        peca.setX(canto.peca.getX()+3);
+                        cantos.remove(canto);
+                    }
+                    peca.setY(canto.peca.getY());
+                }
+            }
+
+
+
+
+            System.out.println("Pecas do Jogador: " + i);
+                    Peca []peca = jogadores[i+1].jogada();
+                    jogo.addPiece(peca[0], jogo.findCantos(peca[1]));
+
+                    System.out.println();
+
+                    jogo.printTabuleiro();
+
+                    System.out.println();
+                    Peca []pecas = jogadores[0].jogada();
+                    jogo.addPiece(pecas[0], jogo.findCantos(pecas[1]));
+
+                    jogo.printTabuleiro();
+
+                    System.out.println();
+                    Peca []peca1s = jogadores[2].jogada();
+                    jogo.addPiece(peca1s[0], jogo.findCantos(peca1s[1]));
+                    jogo.showTabuleiro();
+
+                    jogo.printTabuleiro();
+            //
+            //        System.out.println();
+            //        Peca []peca2s = jogadores[1].jogada();
+            //        jogo.addPiece(peca2s[0], jogo.findCantos(peca2s[1]));
+            //        System.out.println();
+            //        jogo.showTabuleiro();
+            //        jogadores[0].showpieces();
+            //
+            //        System.out.println();
+            //        Peca []peca21s = jogadores[1].jogada();
+            //        jogo.addPiece(peca21s[0], jogo.findCantos(peca21s[1]));
+            //        System.out.println();
+            //        jogo.showTabuleiro();
+            //        jogadores[0].showpieces();
+            //
+            //        jogo.showTabuleiro();
+            //
+            //        System.out.println("\n" + jogo.boardXmin + " " + jogo.boardYmin);
+            //        System.out.println("\n" + jogo.boardXmax + " " + jogo.boardYmax);
